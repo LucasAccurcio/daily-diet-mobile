@@ -22,7 +22,7 @@ A API Daily Diet é uma API RESTful projetada para gerenciar usuários e suas re
 
 ## Diagrama do Banco de Dados
 
-![Database Diagram](/assets/database_diagram.svg)
+![Database Diagram](./assets/database_diagram.svg)
 
 
 ## Configuração Local

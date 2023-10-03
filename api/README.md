@@ -23,7 +23,7 @@ Daily Diet is a RESTful API designed to manage daily meals and track caloric int
 
 ## Database Diagram
 
-![Database Diagram](/assets/database_diagram.svg)
+![Database Diagram](./assets/database_diagram.svg)
 
 
 ## Local Setup
