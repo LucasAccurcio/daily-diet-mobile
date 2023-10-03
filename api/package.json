@@ -1,0 +1,30 @@
+{
+	"name": "api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon src/index.js",
+		"compile": "npx tsc",
+		"start": "node ./src/index.js",
+		"swagger-autogen": "node swagger.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@prisma/client": "^5.3.1",
+		"bcrypt": "^5.1.1",
+		"body-parser": "^1.20.2",
+		"cors": "^2.8.5",
+		"express": "^4.18.2",
+		"jsonwebtoken": "^9.0.2",
+		"swagger-jsdoc": "^6.2.8",
+		"swagger-ui-express": "^5.0.0"
+	},
+	"devDependencies": {
+		"nodemon": "^3.0.1",
+		"swagger-autogen": "^2.23.6"
+	}
+}
