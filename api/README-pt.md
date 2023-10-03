@@ -31,11 +31,11 @@ A API Daily Diet é uma API RESTful projetada para gerenciar usuários e suas re
 2. Instale as dependências: `npm install`
 3. Configure seu arquivo `.env` com seu banco de dados e segredo JWT.
 4. Execute as migrações do banco de dados: `prisma migrate dev --name init`
-5. Inicie o servidor: `npm run start`
+5. Inicie o servidor: `npm run dev`
 
 ## Executando a Aplicação
 
-1. Para iniciar a aplicação, execute `npm run start`.
+1. Para iniciar a aplicação, execute `npm run dev`.
 2. A API estará disponível em `http://localhost:3000/api`.
 
 ## Documentação da API

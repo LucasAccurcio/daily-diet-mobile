@@ -38,37 +38,43 @@ Daily Diet is a RESTful API designed to manage daily meals and track caloric int
 1. Clone the repository:
 
    ```bash
-  git clone https://github.com/your-username/daily-diet.git
+  git clone https://github.com/LucasAccurcio/daily-diet-mobile.git
+  ```
 
 2. Navigate to the project directory:
 
   ```bash
   cd api
+  ```
 
 3. Install dependencies:
 
   ```bash
   npm install
+  ```
 
 4. Create a .env file and add your database credentials:
 
   ```env
   DATABASE_URL="postgresql://username:password@localhost:5432/mydb"
   JWT_SECRET="your-secret-key"
+  ```
 
 5. Run database migrations:
 
   ```bash
   prisma migrate dev --name init
+  ```
 
 6. Start the server:
 
   ```bash
   npm run dev
+  ```
 
 ## Running the Application
 
-1. To start the application, run `npm run start`.
+1. To start the application, run `npm run dev`.
 2. The API will be available at `http://localhost:3000/api`.
 
 ## API Documentation
