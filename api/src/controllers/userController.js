@@ -13,7 +13,7 @@ exports.createUser = async (req, res) => {
 	});
 
 	if (existingUser) {
-		return res.status(400).json({ message: 'Username already exists' });
+		return res.json({ status: 400, message: 'Username already exists' });
 	}
 
 	const hashedPassword = await bcrypt.hash(password, 10);
@@ -22,20 +22,30 @@ exports.createUser = async (req, res) => {
 		const newUser = await prisma.user.create({
 			data: { username, passwordHash: hashedPassword, email },
 		});
-		res.json(newUser);
+		return res.json({ status: 201, newUser });
 	} catch (error) {
-		res.status(500).json({ message: 'Could not create user', error });
+		return res.json({ status: 500, message: 'Could not create user', error });
 	}
 };
 
 exports.editUser = async (req, res) => {
 	const { id } = req.params;
-	const { username, email } = req.body;
-	const updatedUser = await prisma.user.update({
+	const { username, email, password, newPassword } = req.body;d
+	// Verificar se o usuário já existe
+	const existingUser = await prisma.user.findUnique({
 		where: { id: parseInt(id) },
-		data: { username, email },
 	});
-	res.json(updatedUser);
+	const comparePassword = bcrypt.compare(password, existingUser.passwordHash);
+	if (comparePassword) {
+		const hashedPassword = await bcrypt.hash(newPassword, 10);
+		const updatedUser = await prisma.user.update({
+			where: { id: parseInt(id) },
+			data: { username, email, passwordHash: hashedPassword },
+		});
+		return res.json(updatedUser);
+	} else {
+		return res.json({ status: 401, message: 'Invalid password' });
+	}
 };
 
 exports.deleteUser = async (req, res) => {
@@ -53,7 +63,7 @@ exports.loginUser = async (req, res) => {
 	});
 
 	if (!user) {
-		return res.status(404).json({ message: 'User not found' });
+		return res.json({ status: 404, message: 'User not found' });
 	}
 
 	const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
@@ -66,16 +76,16 @@ exports.loginUser = async (req, res) => {
 				expiresIn: '1h',
 			},
 		);
-		return res.json({ message: 'Login successful', token });
+		return res.json({ status: 200, message: 'Login successful', token });
 	} else {
-		return res.status(401).json({ message: 'Invalid password' });
+		return res.json({ status: 401, message: 'Invalid password' });
 	}
 };
 
 exports.getUserById = async (req, res) => {
-  const { id } = req.params;
-  const user = await prisma.user.findUnique({
-    where: { id: parseInt(id) },
-  });
-  res.json(user);
-}
+	const { id } = req.params;
+	const user = await prisma.user.findUnique({
+		where: { id: parseInt(id) },
+	});
+	res.json(user);
+};
