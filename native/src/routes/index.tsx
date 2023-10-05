@@ -1,9 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import AddMealScreen from '../../../mobile/src/screens/AddMeal';
+import AddMealScreen from '../screens/AddMeal';
 import { RootStackParamList } from '../interfaces/IRoutes';
-import LoginScreen from '../../../mobile/src/screens/Login';
-import RegisterScreen from '../../../mobile/src/screens/Register';
-import HomeScreen from '../../../mobile/src/screens/Home';
+import LoginScreen from '../screens/Login';
+import RegisterScreen from '../screens/Register';
+import HomeScreen from '../screens/Home';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
