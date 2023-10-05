@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { AppNavigator } from '../mobile/src/routes';
+import { AppNavigator } from './src/routes';
 import { NativeBaseProvider } from 'native-base';
 
 import Toast from 'react-native-toast-message';
